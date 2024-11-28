@@ -1,0 +1,70 @@
+<div class="container">
+  <div>
+    <h2>Ajouter une lunette :</h2>
+  </div>
+  <form [formGroup]="addLunetteForm" (ngSubmit)="addLunette()">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>ID lunette</label>
+      <input type="text" formControlName="IdLunette" class="form-control" required />
+      <div *ngIf="addLunetteForm.get('IdLunette')?.touched && addLunetteForm.get('IdLunette')?.errors?.['required']" class="text-danger">
+        Le ID de la lunette est obligatoire.
+      </div>
+      <div *ngIf="addLunetteForm.get('IdLunette')?.touched && addLunetteForm.get('IdLunette')?.errors?.['minlength']" class="text-danger">
+        Le ID doit contenir au moins 1 caractère.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom lunette</label>
+      <input type="text" formControlName="nomLunette" class="form-control" required />
+      <div *ngIf="addLunetteForm.get('nomLunette')?.touched && addLunetteForm.get('nomLunette')?.errors?.['required']" class="text-danger">
+        Le nom de la lunette est obligatoire.
+      </div>
+      <div *ngIf="addLunetteForm.get('nomLunette')?.touched && addLunetteForm.get('nomLunette')?.errors?.['minlength']" class="text-danger">
+        Le nom doit contenir au moins 3 caractères.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" required />
+      <div *ngIf="addLunetteForm.get('email')?.touched && addLunetteForm.get('email')?.errors?.['invalidEmail']" class="text-danger">
+        L'email doit contenir '&#64;' et se terminer par '.com'.
+      </div>
+      <div *ngIf="addLunetteForm.get('email')?.touched && addLunetteForm.get('email')?.errors?.['required']" class="text-danger">
+        L'email est obligatoire.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Prix lunette</label>
+      <input type="number" formControlName="prixLunette" class="form-control" required />
+      <div *ngIf="addLunetteForm.get('prixLunette')?.touched && addLunetteForm.get('prixLunette')?.errors?.['required']" class="text-danger">
+        Le prix est obligatoire.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date Création</label>
+      <input type="date" formControlName="dateCreation" class="form-control" required />
+      <div *ngIf="addLunetteForm.get('dateCreation')?.touched && addLunetteForm.get('dateCreation')?.errors?.['required']" class="text-danger">
+        La date de création est obligatoire.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Style</label>
+      <select class="form-control" formControlName="idSty">
+        <option value="">Sélectionner un style</option>
+        <option *ngFor="let style of styles" [value]="style.idSty">{{ style.nomSty }}</option>
+      </select>
+      <div *ngIf="addLunetteForm.get('idSty')?.touched && addLunetteForm.get('idSty')?.errors?.['required']" class="text-danger">
+        Le style est obligatoire.
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>

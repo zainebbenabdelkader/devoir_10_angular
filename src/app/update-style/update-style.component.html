@@ -1,0 +1,13 @@
+<form (ngSubmit)="saveStyle()">
+  <div>
+    <label>ID Style</label>
+    <input type="text" [(ngModel)]="style.idSty" name="idSty" class="form-control w-25" readonly>
+  </div>
+  <div>
+    <label>Nom Style</label>
+    <input type="text" [(ngModel)]="style.nomSty" name="nomSty" class="form-control" placeholder="Entrez un nom de style...">
+  </div>
+  <button type="submit" [disabled]="!style.nomSty" class="btn btn-success">
+    {{ ajout ? 'Ajouter' : 'Modifier' }}
+  </button>
+</form>

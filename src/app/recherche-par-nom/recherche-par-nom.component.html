@@ -1,0 +1,34 @@
+<div class="container">
+  <form class="form-inline">
+      <div class="form-group mx-sm-3 mb-2 mt-2">
+          <label>Nom Lunette en tapant</label>
+          <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+      </div>
+  </form>
+  <div class="card shadow mb-4">
+      <div class="card-body">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Nom</th>
+                      <th>Prix</th>
+                      <th>Date Création</th>
+                      <th>Style</th> <!-- Updated Marque to Style -->
+                  </tr>
+              </thead>
+              <tbody *ngFor="let lunette of lunettes"> <!-- Updated tv to lunette -->
+                  <tr>
+                      <td>{{ lunette.idLunette }}</td> <!-- Updated idTv to idLunette -->
+                      <td>{{ lunette.nomLunette }}</td> <!-- Updated nomTv to nomLunette -->
+                      <td>{{ lunette.prixLunette }}</td> <!-- Updated prixTv to prixLunette -->
+                      <td>{{ lunette.dateCreation | date:'dd/MM/yyyy' }}</td>
+                      <td>{{ lunette.style.nomSty }}</td> <!-- Updated marque.nomMar to style.nomStyle -->
+                      <!-- <td><a class="btn btn-danger" (click)="supprimerLunette(lunette)">Supprimer</a></td> -->
+                      <!-- <a [routerLink]="['/update-lunette', lunette.idLunette]" class="btn btn-success">Modifier</a> -->
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

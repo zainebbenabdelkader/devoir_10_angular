@@ -1,0 +1,33 @@
+<!-- liste-nutritional.component.html -->
+
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <app-update-style
+      [style]="updatedStyle"
+      (styleUpdated)="styleUpdated($event)"
+      [ajout]="ajout">
+    </app-update-style>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom Style</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sty of styles">
+            <td>{{ sty.idSty }}</td>
+            <td>{{ sty.nomSty }}</td>
+            <td>
+              <button class="btn btn-success" (click)="updateSty(sty)">Editer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
